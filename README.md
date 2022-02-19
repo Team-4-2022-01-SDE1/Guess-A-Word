@@ -1,1 +1,1 @@
-# Wordle
+# Guess a Word

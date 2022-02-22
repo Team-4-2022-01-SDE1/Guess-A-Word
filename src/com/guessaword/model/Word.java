@@ -9,15 +9,14 @@ public class Word {
     public static final String ANSI_WHITE = "\u001B[37m";
     public static final int WORD_LENGTH = 5;
 
-    private char[]  word;
+    private char[] wordArr;
     private char[] playerWord;
-    private WordBank wordBank; // TODO: Need to initiate.
-                               // Can not right now because WorkBank ctor requires List<String> arg
+
 
     public Map<Integer, String> checkLetter(){
         Map<Integer, String> result = new HashMap<>();
 
-        List<Character> wordList = toList(word);
+        List<Character> wordList = toList(wordArr);
         List<Character> playerList = toList(playerWord);
 
 
@@ -40,29 +39,21 @@ public class Word {
     }
 
     public boolean areWordsEqual(){
-        return Arrays.toString(word).equalsIgnoreCase(Arrays.toString(playerWord));
+        return Arrays.toString(wordArr).equalsIgnoreCase(Arrays.toString(playerWord));
     }
 
-    public void setPlayerWord(String input){
+
+    public char[] getWordArr(){
+        return wordArr;
+    }
+    
+
+    public void setPlayerWord(String input) throws IllegalArgumentException{
         if (input.length() != WORD_LENGTH )
         {
             throw new IllegalArgumentException("Invalid Word: " + input +". Must be a 5-letter word.");
         }
         playerWord = input.toUpperCase().toCharArray();
-    }
-
-    // TODO: Need to initiate word bank "new"
-    public void setWord(){
-        word = wordBank.getWord().toUpperCase().toCharArray();
-    }
-
-    public char[] getWord(){
-        return word;
-    }
-
-    // DELETE FOR TEST PROPOSES ONLY
-    public void setWord(String input){
-        this.word = input.toUpperCase().toCharArray();
     }
 
     private List<Character> toList(char[] items){
@@ -73,9 +64,14 @@ public class Word {
         return result;
     }
 
+    public void setWordArr(String input){
+        this.wordArr = input.toUpperCase().toCharArray();
+    }
+
+
     @Override
     public String toString(){
-        return getClass().getSimpleName()+": word="+ Arrays.toString(getWord()) +", displayWord=" + Arrays.toString(getWord());
+        return getClass().getSimpleName()+": word="+ Arrays.toString(getWordArr()) +", displayWord=" + Arrays.toString(getWordArr());
     }
 
 }

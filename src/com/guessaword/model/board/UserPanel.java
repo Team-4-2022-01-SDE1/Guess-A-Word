@@ -29,7 +29,7 @@ public class UserPanel {
         return userPanel;
     }
 
-    public void show(String username) {
+    public void show(Player currPlayer) {
         System.out.printf("%10s%12s%10s%10s%10s%10s%10s%10s%10s%10s\n",
                 "ID",
                 "Player",
@@ -56,14 +56,14 @@ public class UserPanel {
         );
         boolean isNotNewPlayer = false;
         for (String player: players) {
-            if (player.contains(username)) {
+            if (player.equals(currPlayer)) {
                 isNotNewPlayer = true;
-                System.out.println(player);
+                System.out.println(currPlayer);
             }
         }
         if (!isNotNewPlayer) {
-            player = new Player(username);
-            System.out.println(player);
+            currPlayer.setPlayerId();
+            System.out.println(currPlayer);
         }
     }
 }

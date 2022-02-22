@@ -1,11 +1,11 @@
 package com.guessaword.model;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Player {
     String name;
     int playerId;
-    int solutionsAttempts;
     Map<Integer, Integer> stats;
 
     public Player(String name) {
@@ -26,10 +26,19 @@ public class Player {
     }
 
     public void setPlayerId() {
-        this.playerId = stats.size() + 1;
+        if (stats != null)
+            this.playerId = stats.size() + 1;
+        else
+            this.playerId = 1;
     }
 
-    public void setStats(Map<Integer, Integer>stats){
+    public void setStats(int solutionsAttempts) {
+        if (stats != null) {
+            stats = getStats();
+        } else {
+            stats = new HashMap<>();
+        }
+
         if (stats.containsKey(solutionsAttempts)) {
             stats.put(solutionsAttempts, stats.get(solutionsAttempts) + 1);
         }
@@ -58,7 +67,6 @@ public class Player {
                 statistics.attemptFive(stats),
                 statistics.attemptSix(stats),
                 statistics.getLosses(stats));
-
     }
 
     public static class Statistics {

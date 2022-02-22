@@ -12,12 +12,6 @@ public class TitlePanel {
     public static final String ANSI_GRAY = "\u001B[37m";
 
     public void showTitle() {
-
-        title();
-        showInstructions();
-    }
-
-    public void title() {
         System.out.println(ANSI_CYAN + "███████╗ ██╗   ██╗███████╗███████╗███████╗     █████╗     ██╗    ██╗ ██████╗ ██████╗ ██████╗\n" +
              "██╔════╝ ██║   ██║██╔════╝██╔════╝██╔════╝    ██╔══██╗    ██║    ██║██╔═══██╗██╔══██╗██╔══██╗\n" +
              "██║  ███╗██║   ██║█████╗  ███████╗███████╗    ███████║    ██║ █╗ ██║██║   ██║██████╔╝██║  ██║\n" +

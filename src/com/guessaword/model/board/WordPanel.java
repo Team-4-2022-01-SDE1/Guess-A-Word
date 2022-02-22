@@ -2,8 +2,6 @@ package com.guessaword.model.board;
 
 import com.guessaword.model.Word;
 
-import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public class WordPanel {
@@ -36,6 +34,6 @@ public class WordPanel {
                 result.get(2),
                 result.get(3),
                 result.get(4)
-                );
+        );
     }
 }

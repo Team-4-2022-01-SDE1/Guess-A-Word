@@ -1,10 +1,7 @@
 package com.guessaword.controller;
 
 import com.guessaword.model.WordBank;
-import com.guessaword.model.board.Prompts;
-import com.guessaword.model.board.TitlePanel;
-import com.guessaword.model.board.UserPanel;
-import com.guessaword.model.board.WordPanel;
+import com.guessaword.model.board.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,15 +12,14 @@ public class GuessAWordApp {
     private TitlePanel titlePanel = new TitlePanel();
     private UserPanel userPanel = UserPanel.getInstance();
     private WordPanel wordPanel = new WordPanel();
-
+    private Results results = new Results();
 
     public void start() {
         titlePanel.showTitle();
         String username = Prompts.getUserName();
-        System.out.println(username);
-        // userPanel.show(username);
+        userPanel.show(username);
         String word = wordBank.getWord();
         int count = wordPanel.showWordPanel(word);
-        // showResults
+        results.showResults(count);
     }
 }

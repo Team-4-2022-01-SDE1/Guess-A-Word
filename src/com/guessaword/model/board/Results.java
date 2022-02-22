@@ -1,5 +1,7 @@
 package com.guessaword.model.board;
 
-class Results {
+public class Results {
+    public void showResults(int result) {
 
+    }
 }

@@ -11,13 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserPanel {
-    private static final String LIST_OF_PLAYERS_FROM_FILE = "Dictionary/players.dat";
+    private static final String LIST_OF_PLAYERS_FROM_FILE = "players.dat";
     Player player;
     List<String> players = new ArrayList<>();
 
     public static UserPanel getInstance() {
         UserPanel userPanel = null;
-        if (Files.exists(Path.of("data/players.dat"))) {
+        if (Files.exists(Path.of(LIST_OF_PLAYERS_FROM_FILE))) {
             try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(LIST_OF_PLAYERS_FROM_FILE))) {
                 userPanel = (UserPanel) inputStream.readObject();
             } catch (IOException | ClassNotFoundException e) {
@@ -54,15 +54,16 @@ public class UserPanel {
                 "-----",
                 "------"
         );
-        if (players == null) {
-            player = new Player(username);
-            System.out.println(player);
-            return;
-        }
+        boolean isNotNewPlayer = false;
         for (String player: players) {
             if (player.contains(username)) {
+                isNotNewPlayer = true;
                 System.out.println(player);
             }
+        }
+        if (!isNotNewPlayer) {
+            player = new Player(username);
+            System.out.println(player);
         }
     }
 }

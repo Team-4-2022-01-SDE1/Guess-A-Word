@@ -2,50 +2,67 @@ package com.guessaword.model.board;
 
 import com.guessaword.model.Player;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserPanel {
     private static final String LIST_OF_PLAYERS_FROM_FILE = "Dictionary/players.dat";
     Player player;
-    List<String> players;
+    List<String> players = new ArrayList<>();
 
-    public String showUser(String username) {
-        players = getListOfPlayers();
-        if (!checkIfValidUser(username)) {
-            player = new Player(username);
+    public static UserPanel getInstance() {
+        UserPanel userPanel = null;
+        if (Files.exists(Path.of("data/players.dat"))) {
+            try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(LIST_OF_PLAYERS_FROM_FILE))) {
+                userPanel = (UserPanel) inputStream.readObject();
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         } else {
-            player = getPlayerFromList(username);
+            userPanel = new UserPanel();
         }
-        return player.toString();
+        return userPanel;
     }
 
-    private List<String> getListOfPlayers() {
-        try {
-            players = Files.readAllLines(Path.of(LIST_OF_PLAYERS_FROM_FILE));
-        } catch (IOException e) {
-            e.printStackTrace();
+    public void show(String username) {
+        System.out.printf("%10s%12s%10s%10s%10s%10s%10s%10s%10s%10s\n",
+                "ID",
+                "Player",
+                "Wins",
+                "First",
+                "Second",
+                "Third",
+                "Fourth",
+                "Fifth",
+                "Sixth",
+                "Losses"
+                );
+        System.out.printf("%10s%12s%10s%10s%10s%10s%10s%10s%10s%10s\n",
+                "--",
+                "------",
+                "----",
+                "-----",
+                "------",
+                "-----",
+                "------",
+                "-----",
+                "-----",
+                "------"
+        );
+        if (players == null) {
+            player = new Player(username);
+            System.out.println(player);
+            return;
         }
-        return players;
-    }
-
-    private boolean checkIfValidUser(String username) {
-        for (String playah : players) {
-            if (playah.contains(username)) {
-                return true;
+        for (String player: players) {
+            if (player.contains(username)) {
+                System.out.println(player);
             }
         }
-        return false;
-    }
-
-    private Player getPlayerFromList(String username) {
-        for (String playah : players) {
-            if (playah.contains(username)) {
-                player = new Player(username);
-            }
-        }
-        return player;
     }
 }

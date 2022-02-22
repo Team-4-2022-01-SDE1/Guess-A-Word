@@ -60,8 +60,7 @@ public class Word {
     public void setWord(String word){
         this.wordArr = word.toUpperCase().toCharArray();
     }
-
-
+  
     @Override
     public String toString(){
         return getClass().getSimpleName()+": word="+ Arrays.toString(getWord()) +", displayWord=" + Arrays.toString(getWord());

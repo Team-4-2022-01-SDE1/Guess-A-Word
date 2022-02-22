@@ -6,9 +6,9 @@ import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.*;
 
-class WordBank {
+public class WordBank {
     protected List<String> dict;
-    private static final String LIST_OF_WORDS_FROM_FILE = "Dictionary/words.txt";
+    private static final String LIST_OF_WORDS_FROM_FILE = "data/words.txt";
 
     public WordBank(List<String> dict) {
         setDict(dict);

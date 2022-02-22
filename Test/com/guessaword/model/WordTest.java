@@ -18,10 +18,10 @@ public class WordTest {
     public void setUp() {
         List<String> dict = new ArrayList<>();
         wordBank = new WordBank(dict);
-        word = new Word();
 
-        word.setWord("ramen");
-        word.setPlayerWord("earth");
+        word = new Word();
+        word.setWord(wordBank.dict.get(1));
+        word.setPlayerWord("Aargh");
     }
 
     @Test
@@ -31,6 +31,6 @@ public class WordTest {
         for(Integer key: map.keySet()){
             System.out.println(key + " = " + map.get(key));
         }
-        System.out.println(wordBank.getWord());
+        System.out.println(wordBank.dict.get(1));
     }
 }

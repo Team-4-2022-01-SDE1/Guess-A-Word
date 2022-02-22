@@ -15,15 +15,9 @@ public class Word {
     public Map<Integer, String> checkLetter(){
         Map<Integer, String> result = new HashMap<>();
 
-       List<Character> playerList = new ArrayList<>();
-       List<Character> wordList = new ArrayList<>();
+       List<Character> playerList = toList(playerWord);
+       List<Character> wordList = toList(wordArr);
 
-        for (char item: wordArr){
-            wordList.add(item);
-        }
-        for (char item: playerWord){
-            playerList.add(item);
-        }
 
         Character holder;
         for(int i = 0; i < 5; i++){
@@ -43,6 +37,18 @@ public class Word {
         return result;
     }
 
+    public boolean areWordsEqual(){
+        return Arrays.toString(wordArr).equalsIgnoreCase(Arrays.toString(playerWord));
+    }
+
+    private List<Character> toList(char[] items){
+        List<Character> result = new ArrayList<>();
+        for (char item: items){
+            result.add(item);
+        }
+        return result;
+    }
+
     public void setPlayerWord(String input){
         playerWord = input.toUpperCase().toCharArray();
     }
@@ -51,11 +57,10 @@ public class Word {
         return wordArr;
     }
 
-    // DELETE FOR TEST PROPOSES ONLY
-    public void setWord(String word) {
-        this.wordArr = word.toCharArray();
+    public void setWord(String word){
+        this.wordArr = word.toUpperCase().toCharArray();
     }
-
+  
     @Override
     public String toString(){
         return getClass().getSimpleName()+": word="+ Arrays.toString(getWord()) +", displayWord=" + Arrays.toString(getWord());

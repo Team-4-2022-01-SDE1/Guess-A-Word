@@ -11,21 +11,13 @@ public class Word {
 
     private char[] wordArr;
     private char[] playerWord;
-    private List<String> dict = new ArrayList<>();
-    private WordBank wordBank = new WordBank(dict);
 
     public Map<Integer, String> checkLetter(){
         Map<Integer, String> result = new HashMap<>();
 
-       List<Character> playerList = new ArrayList<>();
-       List<Character> wordList = new ArrayList<>();
+       List<Character> playerList = toList(playerWord);
+       List<Character> wordList = toList(wordArr);
 
-        for (char item: wordArr){
-            wordList.add(item);
-        }
-        for (char item: playerWord){
-            playerList.add(item);
-        }
 
         Character holder;
         for(int i = 0; i < 5; i++){
@@ -45,26 +37,30 @@ public class Word {
         return result;
     }
 
+    public boolean areWordsEqual(){
+        return Arrays.toString(wordArr).equalsIgnoreCase(Arrays.toString(playerWord));
+    }
+
+    private List<Character> toList(char[] items){
+        List<Character> result = new ArrayList<>();
+        for (char item: items){
+            result.add(item);
+        }
+        return result;
+    }
+
     public void setPlayerWord(String input){
-        playerWord = input.toCharArray();
+        playerWord = input.toUpperCase().toCharArray();
     }
 
     public char[] getWord(){
         return wordArr;
     }
 
-    // DELETE FOR TEST PROPOSES ONLY
     public void setWord(String word){
-        this.wordArr = word.toCharArray();
+        this.wordArr = word.toUpperCase().toCharArray();
     }
 
-    public void setDict(List<String> dict) {
-        this.dict = wordBank.getDict();
-    }
-
-    public List<String> getDict() {
-        return dict;
-    }
 
     @Override
     public String toString(){

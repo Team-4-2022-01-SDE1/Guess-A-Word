@@ -15,15 +15,15 @@ public class WordTest {
     public void setUp() {
         word = new Word();
         word.setWord("force");
-        word.setPlayerWord("earth");
+        word.setPlayerWord("force");
     }
 
     @Test
     public void checkLetter() {
         Map<Integer,String> map = word.checkLetter();
 
-        for(Integer key: map.keySet()){
-            System.out.println(key + " = " + map.get(key));
+        for(Map.Entry<Integer,String> item: map.entrySet()){
+            System.out.print(item.getValue());
         }
     }
 }

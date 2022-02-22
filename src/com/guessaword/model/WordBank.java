@@ -7,7 +7,7 @@ import java.util.*;
 import java.util.stream.*;
 
 class WordBank {
-    List<String> dict;
+    protected List<String> dict;
     private static final String LIST_OF_WORDS_FROM_FILE = "Dictionary/words.txt";
 
     public WordBank(List<String> dict) {
@@ -35,10 +35,9 @@ class WordBank {
     }
 
     public List<String> convertToUpper(List<String> list) {
-        List<String> convertToUpper = list.stream()
+        return list.stream()
                 .distinct()
                 .map(String::toUpperCase)
                 .collect(Collectors.toList());
-        return convertToUpper;
     }
 }

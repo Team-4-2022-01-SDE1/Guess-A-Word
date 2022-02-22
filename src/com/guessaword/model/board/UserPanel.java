@@ -15,7 +15,7 @@ public class UserPanel {
     public String showUser(String username) {
         players = getListOfPlayers();
         if (!checkIfValidUser(username)) {
-            //player = new Player(username);
+            player = new Player(username);
         } else {
             player = getPlayerFromList(username);
         }
@@ -43,7 +43,7 @@ public class UserPanel {
     private Player getPlayerFromList(String username) {
         for (String playah : players) {
             if (playah.contains(username)) {
-                //player = new Player(username);
+                player = new Player(username);
             }
         }
         return player;

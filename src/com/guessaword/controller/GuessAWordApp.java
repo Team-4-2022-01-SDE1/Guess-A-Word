@@ -13,7 +13,8 @@ public class GuessAWordApp {
     public void start() {
         titlePanel.showTitle();
         String username = Prompts.getUserName();
-        userPanel.showUser(username);
+
+        System.out.println(userPanel.showUser(username));
 
 
         // showStatistics();

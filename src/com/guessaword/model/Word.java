@@ -11,8 +11,6 @@ public class Word {
 
     private char[] wordArr;
     private char[] playerWord;
-    private List<String> dict = new ArrayList<>();
-    private WordBank wordBank = new WordBank(dict);
 
     public Map<Integer, String> checkLetter(){
         Map<Integer, String> result = new HashMap<>();
@@ -46,7 +44,7 @@ public class Word {
     }
 
     public void setPlayerWord(String input){
-        playerWord = input.toCharArray();
+        playerWord = input.toUpperCase().toCharArray();
     }
 
     public char[] getWord(){
@@ -54,16 +52,8 @@ public class Word {
     }
 
     // DELETE FOR TEST PROPOSES ONLY
-    public void setWord(String word){
+    public void setWord(String word) {
         this.wordArr = word.toCharArray();
-    }
-
-    public void setDict(List<String> dict) {
-        this.dict = wordBank.getDict();
-    }
-
-    public List<String> getDict() {
-        return dict;
     }
 
     @Override

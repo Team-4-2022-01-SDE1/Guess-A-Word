@@ -47,7 +47,7 @@ public class Player {
     public String toString() {
         Statistics statistics = new Statistics();
         return String.format(
-                "%10d%12s%6d%6d%6d%6d%6d%6d%6d%6d",
+                "%10d%12s%10d%10d%10d%10d%10d%10d%10d%10d",
                 getPlayerId(),
                 getName(),
                 statistics.getWins(stats),
@@ -70,35 +70,59 @@ public class Player {
         //accessors for Player.Statistics() class
 
         public int getLosses (Map<Integer, Integer>stats) {
-            return stats.get(7);
+            if (stats != null)
+                return stats.get(7);
+            else
+                return 0;
         }
 
         public int attemptOne (Map<Integer, Integer>stats) {
-            return stats.get(1);
+            if (stats != null)
+                return stats.get(1);
+            else
+                return 0;
         }
 
         public int attemptTwo (Map<Integer, Integer>stats) {
-            return stats.get(2);
+            if (stats != null)
+                return stats.get(2);
+            else
+                return 0;
         }
 
         public int attemptThree (Map<Integer, Integer>stats) {
-            return stats.get(3);
+            if (stats != null)
+                return stats.get(3);
+            else
+                return 0;
         }
 
         public int attemptFour (Map<Integer, Integer>stats) {
-            return stats.get(4);
+            if (stats != null)
+                return stats.get(4);
+            else
+                return 0;
         }
 
         public int attemptFive (Map<Integer, Integer>stats) {
-            return stats.get(5);
+            if (stats != null)
+                return stats.get(5);
+            else
+                return 0;
         }
 
         public int attemptSix (Map<Integer, Integer>stats) {
-            return stats.get(6);
+            if (stats != null)
+                return stats.get(6);
+            else
+                return 0;
         }
 
         public int getWins (Map<Integer, Integer>stats) {
-            return stats.values().stream().mapToInt(Integer::intValue).sum();
+            if (stats != null)
+                return stats.values().stream().mapToInt(Integer::intValue).sum();
+            else
+                return 0;
         }
     }
 }

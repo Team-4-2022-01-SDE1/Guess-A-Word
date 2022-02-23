@@ -29,7 +29,7 @@ public class GuessAWordApp {
         player = new Player(username);
 
         if (userPanel == null) {
-            System.out.println("Sorry no records exist for " + player.getName());
+            System.out.println("\nSorry no records exist for " + player.getName());
         } else {
             player = userPanel.show(player);
         }

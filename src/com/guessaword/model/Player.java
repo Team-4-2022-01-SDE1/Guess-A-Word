@@ -49,6 +49,14 @@ public class Player implements Serializable {
         return stats;
     }
 
+    private int getWins(Map<Integer, Integer> stats) {
+        Statistics statistics = new Statistics();
+        return statistics.attemptOne(stats) + statistics.attemptTwo(stats)
+                + statistics.attemptThree(stats) + statistics.attemptFour(stats)
+                + statistics.attemptFive(stats) + statistics.attemptSix(stats);
+
+    }
+
     @Override
     public String toString() {
         Statistics statistics = new Statistics();
@@ -56,7 +64,7 @@ public class Player implements Serializable {
                 "%10d%12s%10d%10d%10d%10d%10d%10d%10d%10d",
                 getPlayerId(),
                 getName(),
-                statistics.getWins(stats),
+                getWins(stats),
                 statistics.attemptOne(stats),
                 statistics.attemptTwo(stats),
                 statistics.attemptThree(stats),
@@ -119,16 +127,6 @@ public class Player implements Serializable {
                 return 0;
             }
             return stats.get(7);
-        }
-
-        public int getWins(Map<Integer, Integer> stats) {
-            if (stats == null || stats.get(0) == null) {
-                return 0;
-            }
-            if (stats.size() > 0) {
-                stats.put(0, stats.values().stream().mapToInt(Integer::intValue).sum());
-            }
-            return stats.get(0);
         }
     }
 }

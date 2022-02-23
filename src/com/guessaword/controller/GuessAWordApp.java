@@ -48,7 +48,7 @@ public class GuessAWordApp {
     private String validateUser(String option) {
         String username = "";
         boolean invalidUserName = true;
-        if (option.equalsIgnoreCase("y")) {
+        if (option.equalsIgnoreCase("n")) {
             while (invalidUserName) {
                 username = Prompts.getUserName();
                 if (userPanel == null) {

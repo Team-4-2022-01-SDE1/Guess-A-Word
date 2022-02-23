@@ -10,18 +10,24 @@ import java.util.List;
 public class GuessAWordApp {
     private List<String> dict = new ArrayList<>();
     private WordBank wordBank = new WordBank(dict);
-    private Player player;
+
     private TitlePanel titlePanel = new TitlePanel();
     private UserPanel userPanel = UserPanel.getInstance();
     private WordPanel wordPanel = new WordPanel();
     private Results results = new Results();
 
     public void start() {
+        Player player;
+
         String word = wordBank.getWord();
         titlePanel.showTitle();
         titlePanel.showInstructions();
-        String username = Prompts.getUserName();
+
+        String option = Prompts.getOption();
+        String username = validateUser(option);
+
         player = new Player(username);
+
         if (userPanel == null) {
             System.out.println("Sorry no records exist for " + player.getName());
         } else {
@@ -39,7 +45,25 @@ public class GuessAWordApp {
         update(player);
     }
 
-    public void update(Player player) {
+    private String validateUser(String option) {
+        String username = "";
+        boolean invalidUserName = true;
+        if (option.equalsIgnoreCase("y")) {
+            while (invalidUserName) {
+                username = Prompts.getUserName();
+                if (userPanel == null) {
+                    invalidUserName = false;
+                } else {
+                    invalidUserName = userPanel.validateUserName(username);
+                }
+            }
+        } else {
+            username = Prompts.getUserName();
+        }
+        return username;
+    }
+
+    private void update(Player player) {
         if (userPanel == null) {
             System.out.println("Sorry no records exist for " + player.getName());
         } else {

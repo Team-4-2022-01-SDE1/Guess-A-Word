@@ -30,6 +30,15 @@ public class UserPanel implements Serializable {
         return players;
     }
 
+    public boolean validateUserName(String username) {
+        for (Player player: players) {
+            if (player.getName().equalsIgnoreCase(username)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public Player show(Player currPlayer) {
         System.out.printf("%10s%12s%10s%10s%10s%10s%10s%10s%10s%10s\n",
                 "ID",
@@ -56,7 +65,7 @@ public class UserPanel implements Serializable {
                 "------"
         );
         boolean isNotNewPlayer = true;
-        for (Player player: getPlayers()) {
+        for (Player player: players) {
             if (player.getName().equalsIgnoreCase(currPlayer.getName())) {
                 isNotNewPlayer = false;
                 currPlayer = player;

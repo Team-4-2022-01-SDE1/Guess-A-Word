@@ -13,7 +13,7 @@ public class Prompts {
         String option = "";
         boolean inValidInput = true;
         while (inValidInput) {
-            System.out.print("Are you a returning player [y/n]: ");
+            System.out.print("Returning player [y/n]: ");
             option = input.nextLine();
             if (!option.equalsIgnoreCase("y") || !option.equalsIgnoreCase("n")) {
                 inValidInput = false;

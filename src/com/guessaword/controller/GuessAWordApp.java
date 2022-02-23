@@ -60,7 +60,7 @@ public class GuessAWordApp {
 
     private void update(Player player) {
         if (userPanel == null) {
-            System.out.println("Sorry no records exist for " + player.getName());
+            System.out.println("\nSorry no records exist for " + player.getName());
         } else {
             userPanel.update(player);
         }

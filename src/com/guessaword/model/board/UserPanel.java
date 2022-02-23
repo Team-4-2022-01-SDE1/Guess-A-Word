@@ -52,17 +52,19 @@ public class UserPanel implements Serializable {
                 "Sixth",
                 "Losses"
         );
+        String fiveDashes = "-----";
+        String sixDashes = "------";
         System.out.printf("%10s%12s%10s%10s%10s%10s%10s%10s%10s%10s\n",
                 "--",
-                "------",
+                sixDashes,
                 "----",
-                "-----",
-                "------",
-                "-----",
-                "------",
-                "-----",
-                "-----",
-                "------"
+                fiveDashes,
+                sixDashes,
+                fiveDashes,
+                sixDashes,
+                fiveDashes,
+                fiveDashes,
+                sixDashes
         );
         boolean isNotNewPlayer = true;
         for (Player player: players) {

@@ -26,17 +26,13 @@ public class UserPanel implements Serializable {
         return userPanel;
     }
 
-    public List<Player> getPlayers() {
-        return players;
-    }
-
     public boolean validateNewUserName(String username) {
         for (Player player: players) {
             if (player.getName().equalsIgnoreCase(username)) {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     public Player show(Player currPlayer) {

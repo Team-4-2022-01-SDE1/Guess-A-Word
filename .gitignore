@@ -1,6 +1,7 @@
 #Intellij metadata files
 .idea/
 *.iml
+*.dat
 
 # Compiled class file
 *.class

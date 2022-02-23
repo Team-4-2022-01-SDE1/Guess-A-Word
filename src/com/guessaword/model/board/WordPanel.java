@@ -24,7 +24,7 @@ public class WordPanel {
                 break;
             count++;
             if (count == 7)
-                System.out.println("\n" + word);
+                System.out.println("\nSORRY THE CORRECT WORD IS: "+ word);
         }
         return count;
     }

@@ -87,7 +87,7 @@ public class Word {
   
     @Override
     public String toString(){
-        return getClass().getSimpleName()+": word="+ Arrays.toString(getWord()) +", displayWord=" + Arrays.toString(getWord());
+        return ANSI_GREEN + String.valueOf(wordArr) + RESET;
     }
 
 }

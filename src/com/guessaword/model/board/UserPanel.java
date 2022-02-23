@@ -30,7 +30,7 @@ public class UserPanel implements Serializable {
         return players;
     }
 
-    public boolean validateUserName(String username) {
+    public boolean validateNewUserName(String username) {
         for (Player player: players) {
             if (player.getName().equalsIgnoreCase(username)) {
                 return false;

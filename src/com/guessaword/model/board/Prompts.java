@@ -10,16 +10,16 @@ public class Prompts {
     private static Scanner input = new Scanner(System.in);
 
     public static String getOption() {
-        String answer = "";
+        String option = "";
         boolean inValidInput = true;
         while (inValidInput) {
             System.out.print("Are you a returning player [y/n]: ");
-            answer = input.nextLine();
-            if (!answer.equalsIgnoreCase("y") || !answer.equalsIgnoreCase("n")) {
+            option = input.nextLine();
+            if (!option.equalsIgnoreCase("y") || !option.equalsIgnoreCase("n")) {
                 inValidInput = false;
             }
         }
-        return answer;
+        return option;
     }
 
     public static String getUserName() {

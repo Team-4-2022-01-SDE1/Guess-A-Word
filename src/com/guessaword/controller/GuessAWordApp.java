@@ -33,11 +33,6 @@ public class GuessAWordApp {
         } else {
             player = userPanel.show(player);
         }
-        /*
-        clearConsole();
-        titlePanel.showTitle();
-        userPanel.show(username);
-         */
 
         int count = wordPanel.showWordPanel(word);
         player.setStats(count);
@@ -54,7 +49,7 @@ public class GuessAWordApp {
                 if (userPanel == null) {
                     invalidUserName = false;
                 } else {
-                    invalidUserName = userPanel.validateUserName(username);
+                    invalidUserName = userPanel.validateNewUserName(username);
                 }
             }
         } else {
@@ -68,25 +63,6 @@ public class GuessAWordApp {
             System.out.println("Sorry no records exist for " + player.getName());
         } else {
             userPanel.update(player);
-        }
-    }
-
-    private void clearConsole() {
-        try{
-            String operatingSystem = System.getProperty("os.name"); //Check the current operating system
-
-            if(operatingSystem.contains("Windows")){
-                ProcessBuilder pb = new ProcessBuilder("cmd", "/c", "cls");
-                Process startProcess = pb.inheritIO().start();
-                startProcess.waitFor();
-            } else {
-                ProcessBuilder pb = new ProcessBuilder("clear");
-                Process startProcess = pb.inheritIO().start();
-
-                startProcess.waitFor();
-            }
-        }catch(Exception e){
-            System.out.println(e.toString());
         }
     }
 }

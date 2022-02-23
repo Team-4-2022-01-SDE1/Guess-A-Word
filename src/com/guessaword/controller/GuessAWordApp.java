@@ -22,7 +22,11 @@ public class GuessAWordApp {
         titlePanel.showInstructions();
         String username = Prompts.getUserName();
         player = new Player(username);
-        userPanel.show(player);
+        if (userPanel == null) {
+            System.out.println("Sorry no records exist for " + player.getName());
+        } else {
+            player = userPanel.show(player);
+        }
         /*
         clearConsole();
         titlePanel.showTitle();
@@ -32,6 +36,15 @@ public class GuessAWordApp {
         int count = wordPanel.showWordPanel(word);
         player.setStats(count);
         results.showResults(count);
+        update(player);
+    }
+
+    public void update(Player player) {
+        if (userPanel == null) {
+            System.out.println("Sorry no records exist for " + player.getName());
+        } else {
+            userPanel.update(player);
+        }
     }
 
     private void clearConsole() {

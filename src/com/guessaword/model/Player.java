@@ -1,9 +1,10 @@
 package com.guessaword.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Player {
+public class Player implements Serializable {
     String name;
     int playerId;
     Map<Integer, Integer> stats;
@@ -25,11 +26,8 @@ public class Player {
         return playerId;
     }
 
-    public void setPlayerId() {
-        if (stats != null)
-            this.playerId = stats.size() + 1;
-        else
-            this.playerId = 1;
+    public void setPlayerId(int playerId) {
+        this.playerId = playerId;
     }
 
     public void setStats(int solutionsAttempts) {
@@ -41,8 +39,7 @@ public class Player {
 
         if (stats.containsKey(solutionsAttempts)) {
             stats.put(solutionsAttempts, stats.get(solutionsAttempts) + 1);
-        }
-        else {
+        } else {
             stats.put(solutionsAttempts, 1);
         }
         this.stats = stats;
@@ -70,67 +67,68 @@ public class Player {
     }
 
     public static class Statistics {
-
         //  static nested class created to track, calculate and store Player() statistics.
-
 
 
         //accessors for Player.Statistics() class
 
-        public int getLosses (Map<Integer, Integer>stats) {
-            if (stats != null)
-                return stats.get(7);
-            else
+        public int attemptOne(Map<Integer, Integer> stats) {
+            if (stats == null || stats.get(1) == null) {
                 return 0;
+            }
+            return stats.get(1);
         }
 
-        public int attemptOne (Map<Integer, Integer>stats) {
-            if (stats != null)
-                return stats.get(1);
-            else
+        public int attemptTwo(Map<Integer, Integer> stats) {
+            if (stats == null || stats.get(2) == null) {
                 return 0;
+            }
+            return stats.get(2);
         }
 
-        public int attemptTwo (Map<Integer, Integer>stats) {
-            if (stats != null)
-                return stats.get(2);
-            else
+        public int attemptThree(Map<Integer, Integer> stats) {
+            if (stats == null || stats.get(3) == null) {
                 return 0;
+            }
+            return stats.get(3);
         }
 
-        public int attemptThree (Map<Integer, Integer>stats) {
-            if (stats != null)
-                return stats.get(3);
-            else
+        public int attemptFour(Map<Integer, Integer> stats) {
+            if (stats == null || stats.get(4) == null) {
                 return 0;
+            }
+            return stats.get(4);
         }
 
-        public int attemptFour (Map<Integer, Integer>stats) {
-            if (stats != null)
-                return stats.get(4);
-            else
+        public int attemptFive(Map<Integer, Integer> stats) {
+            if (stats == null || stats.get(5) == null) {
                 return 0;
+            }
+            return stats.get(5);
         }
 
-        public int attemptFive (Map<Integer, Integer>stats) {
-            if (stats != null)
-                return stats.get(5);
-            else
+        public int attemptSix(Map<Integer, Integer> stats) {
+            if (stats == null || stats.get(6) == null) {
                 return 0;
+            }
+            return stats.get(6);
         }
 
-        public int attemptSix (Map<Integer, Integer>stats) {
-            if (stats != null)
-                return stats.get(6);
-            else
+        public int getLosses(Map<Integer, Integer> stats) {
+            if (stats == null || stats.get(7) == null) {
                 return 0;
+            }
+            return stats.get(7);
         }
 
-        public int getWins (Map<Integer, Integer>stats) {
-            if (stats != null)
-                return stats.values().stream().mapToInt(Integer::intValue).sum();
-            else
+        public int getWins(Map<Integer, Integer> stats) {
+            if (stats == null || stats.get(0) == null) {
                 return 0;
+            }
+            if (stats.size() > 0) {
+                stats.put(0, stats.values().stream().mapToInt(Integer::intValue).sum());
+            }
+            return stats.get(0);
         }
     }
 }

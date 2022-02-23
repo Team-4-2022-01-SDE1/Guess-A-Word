@@ -2,18 +2,15 @@ package com.guessaword.model.board;
 
 import com.guessaword.model.Player;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserPanel {
-    private static final String LIST_OF_PLAYERS_FROM_FILE = "players.dat";
-    Player player;
-    List<String> players = new ArrayList<>();
+public class UserPanel implements Serializable {
+    private static final String LIST_OF_PLAYERS_FROM_FILE = "data/players.dat";
+    private List<Player> players = new ArrayList<>();
 
     public static UserPanel getInstance() {
         UserPanel userPanel = null;
@@ -29,7 +26,11 @@ public class UserPanel {
         return userPanel;
     }
 
-    public void show(Player currPlayer) {
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public Player show(Player currPlayer) {
         System.out.printf("%10s%12s%10s%10s%10s%10s%10s%10s%10s%10s\n",
                 "ID",
                 "Player",
@@ -41,7 +42,7 @@ public class UserPanel {
                 "Fifth",
                 "Sixth",
                 "Losses"
-                );
+        );
         System.out.printf("%10s%12s%10s%10s%10s%10s%10s%10s%10s%10s\n",
                 "--",
                 "------",
@@ -54,16 +55,41 @@ public class UserPanel {
                 "-----",
                 "------"
         );
-        boolean isNotNewPlayer = false;
-        for (String player: players) {
-            if (player.equals(currPlayer)) {
-                isNotNewPlayer = true;
+        boolean isNotNewPlayer = true;
+        for (Player player: getPlayers()) {
+            if (player.getName().equalsIgnoreCase(currPlayer.getName())) {
+                isNotNewPlayer = false;
+                currPlayer = player;
                 System.out.println(currPlayer);
             }
         }
-        if (!isNotNewPlayer) {
-            currPlayer.setPlayerId();
+        if (isNotNewPlayer) {
+            currPlayer.setPlayerId(players.size() + 1);
             System.out.println(currPlayer);
+        }
+        return currPlayer;
+    }
+
+    public void update(Player currPlayer) {
+        boolean isNotNewPlayer = true;
+        for (Player player : players) {
+            if (player.getName().equalsIgnoreCase(currPlayer.getName())) {
+                isNotNewPlayer = false;
+                players.remove(player);
+                players.add(currPlayer);
+            }
+        }
+        if (isNotNewPlayer) {
+            players.add(currPlayer);
+        }
+        save();
+    }
+
+    public void save() {
+        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(LIST_OF_PLAYERS_FROM_FILE))) {
+            outputStream.writeObject(this);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

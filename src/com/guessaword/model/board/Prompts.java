@@ -29,6 +29,10 @@ public class Prompts {
                     isInDict = false;
                 }
             }
+            if (isInDict || userWord.length() != 5) {
+                System.out.println("Sorry that word is not a real word.");
+                isInDict = true;
+            }
         }
         return userWord;
     }

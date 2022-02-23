@@ -23,6 +23,8 @@ public class WordPanel {
             if (secretWord.equalsIgnoreCase(userWord))
                 break;
             count++;
+            if (count == 7)
+                System.out.println("\n" + word);
         }
         return count;
     }

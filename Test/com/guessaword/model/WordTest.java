@@ -21,7 +21,7 @@ public class WordTest {
 
         word = new Word();
         word.setWord(wordBank.dict.get(1));
-        word.setPlayerWord("Aargh");
+        word.setPlayerWord("AARAH");
     }
 
     @Test

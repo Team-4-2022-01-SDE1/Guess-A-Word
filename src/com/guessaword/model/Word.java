@@ -18,16 +18,25 @@ public class Word {
        List<Character> playerList = toList(playerWord);
        List<Character> wordList = toList(wordArr);
 
+       Map<Character, Integer> wordCount = charCount(wordArr);
 
         Character holder;
         for(int i = 0; i < 5; i++){
-            if (wordList.get(i).equals(playerList.get(i))){
+            if (wordList.get(i).equals(playerList.get(i)) && wordCount.containsKey(wordList.get(i))){
                 holder = playerList.get(i);
                 result.put(i, BOLD + ANSI_GREEN + holder + RESET);
+
+                int occurrence  = wordCount.get(wordList.get(i));
+                occurrence -= 1;
+                wordCount.put(wordList.get(i), occurrence);
             }
-            else if (wordList.contains(playerList.get(i))){
+            else if (wordList.contains(playerList.get(i)) && wordCount.get(playerList.get(i)) > 0){
                 holder = playerList.get(i);
                 result.put(i, BOLD + ANSI_YELLOW + holder + RESET);
+
+                int occurrence  = wordCount.get(playerList.get(i));
+                occurrence -= 1;
+                wordCount.put(playerList.get(i), occurrence);
             }
             else{
                 holder = playerList.get(i);
@@ -35,6 +44,21 @@ public class Word {
             }
         }
         return result;
+    }
+
+    private Map<Character,Integer> charCount(char[] items){
+        Map<Character, Integer> charCountMap = new TreeMap<>();
+
+        for(char item: items){
+            if (charCountMap.containsKey(item)){
+                charCountMap.put(item, charCountMap.get(item) + 1);
+            }
+            else {
+                charCountMap.put(item, 1);
+            }
+        }
+
+        return  charCountMap;
     }
 
     public boolean areWordsEqual(){

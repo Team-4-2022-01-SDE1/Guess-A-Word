@@ -10,28 +10,29 @@ import java.util.List;
 public class GuessAWordApp {
     private List<String> dict = new ArrayList<>();
     private WordBank wordBank = new WordBank(dict);
-    private Player player;
+
     private TitlePanel titlePanel = new TitlePanel();
     private UserPanel userPanel = UserPanel.getInstance();
     private WordPanel wordPanel = new WordPanel();
     private Results results = new Results();
 
     public void start() {
+        Player player;
+
         String word = wordBank.getWord();
         titlePanel.showTitle();
         titlePanel.showInstructions();
-        String username = Prompts.getUserName();
+
+        String option = Prompts.getOption();
+        String username = validateUser(option);
+
         player = new Player(username);
+
         if (userPanel == null) {
-            System.out.println("Sorry no records exist for " + player.getName());
+            System.out.println("\nSorry no records exist for " + player.getName());
         } else {
             player = userPanel.show(player);
         }
-        /*
-        clearConsole();
-        titlePanel.showTitle();
-        userPanel.show(username);
-         */
 
         int count = wordPanel.showWordPanel(word);
         player.setStats(count);
@@ -39,30 +40,29 @@ public class GuessAWordApp {
         update(player);
     }
 
-    public void update(Player player) {
-        if (userPanel == null) {
-            System.out.println("Sorry no records exist for " + player.getName());
+    private String validateUser(String option) {
+        String username = "";
+        boolean invalidUserName = true;
+        if (option.equalsIgnoreCase("n")) {
+            while (invalidUserName) {
+                username = Prompts.getUserName();
+                if (userPanel == null) {
+                    invalidUserName = false;
+                } else {
+                    invalidUserName = userPanel.validateNewUserName(username);
+                }
+            }
         } else {
-            userPanel.update(player);
+            username = Prompts.getUserName();
         }
+        return username;
     }
 
-    private void clearConsole() {
-        try{
-            String operatingSystem = System.getProperty("os.name"); //Check the current operating system
-
-            if(operatingSystem.contains("Windows")){
-                ProcessBuilder pb = new ProcessBuilder("cmd", "/c", "cls");
-                Process startProcess = pb.inheritIO().start();
-                startProcess.waitFor();
-            } else {
-                ProcessBuilder pb = new ProcessBuilder("clear");
-                Process startProcess = pb.inheritIO().start();
-
-                startProcess.waitFor();
-            }
-        }catch(Exception e){
-            System.out.println(e.toString());
+    private void update(Player player) {
+        if (userPanel == null) {
+            System.out.println("\nSorry no records exist for " + player.getName());
+        } else {
+            userPanel.update(player);
         }
     }
 }

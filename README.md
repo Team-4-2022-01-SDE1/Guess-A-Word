@@ -7,8 +7,8 @@
 ## Loading the Game
 
 * Unzip the `GuessAWord-1.0-dist.zip` file
-* In the terminal or CMD window, open the unzipped folder: `cd GuessAWord-1.0`
-* Run the game, in terminal: `/bin/zsh ./run.sh` and in CMD: `bash ./run.sh`
+* In the terminal or CMD window, open the unzipped folder: `cd GuessAWord-1.0` (Mac) or `cd GuessAWord` (Windows)
+* Run the game, in terminal: `/bin/zsh ./run.sh` and in CMD: `bash run.sh` (Windows must have WSL installed)
 
 ## Playing the Game
 

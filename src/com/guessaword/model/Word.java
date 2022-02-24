@@ -76,10 +76,14 @@ public class Word {
     public void setPlayerWord(String input){
         playerWord = input.toUpperCase().toCharArray();
     }
+    public char[] getPlayerWord(){
+        return playerWord;
+    }
 
     public char[] getWord(){
         return wordArr;
     }
+
 
     public void setWord(String word){
         this.wordArr = word.toUpperCase().toCharArray();

@@ -19,11 +19,11 @@ public class UserPanel implements Serializable {
                 userPanel = (UserPanel) inputStream.readObject();
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
-            }
+                }
         } else {
             userPanel = new UserPanel();
         }
-        return userPanel;
+            return userPanel;
     }
 
     public boolean validateNewUserName(String username) {

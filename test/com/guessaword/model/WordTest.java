@@ -3,10 +3,7 @@ package com.guessaword.model;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -21,16 +18,17 @@ public class WordTest {
 
         word = new Word();
         word.setWord(wordBank.dict.get(1));
-        word.setPlayerWord("AARAH");
+        word.setPlayerWord("AARGH");
     }
 
     @Test
-    public void checkLetter() {
-        Map<Integer,String> map = word.checkLetter();
-
-        for(Integer key: map.keySet()){
-            System.out.println(key + " = " + map.get(key));
-        }
-        System.out.println(wordBank.dict.get(1));
+    public void checkLetter_returnMapEntry_whenComperingUserWordAgainstDictionaryWord() {
+        Map<Integer,String> wordMap = word.checkLetter();
+        assertNotNull(wordMap);
+        assertEquals(5,wordMap.size());
+        String dictWord = Arrays.toString(word.getWord());
+        String playerWord= Arrays.toString(word.getPlayerWord());
+        assertEquals(dictWord, playerWord);
     }
+
 }

@@ -6,8 +6,8 @@ import java.util.Map;
 
 public class WordPanel {
 
-    Word word = new Word();
-    Map<Integer, String> result;
+    private Word word = new Word();
+    private Map<Integer, String> result;
 
     public int showWordPanel(String secretWord) {
         // get user input

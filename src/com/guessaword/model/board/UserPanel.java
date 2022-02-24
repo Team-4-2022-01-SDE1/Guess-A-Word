@@ -92,7 +92,7 @@ public class UserPanel implements Serializable {
         save();
     }
 
-    public void save() {
+    private void save() {
         try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(LIST_OF_PLAYERS_FROM_FILE))) {
             outputStream.writeObject(this);
         } catch (IOException e) {

@@ -2,16 +2,14 @@ package com.guessaword.controller;
 
 import com.guessaword.model.Player;
 import com.guessaword.model.WordBank;
-import com.guessaword.model.board.Results;
-import com.guessaword.model.board.TitlePanel;
-import com.guessaword.model.board.UserPanel;
-import com.guessaword.model.board.WordPanel;
+import com.guessaword.model.board.*;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 import static org.junit.Assert.*;
 

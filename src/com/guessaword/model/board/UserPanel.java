@@ -77,6 +77,10 @@ public class UserPanel implements Serializable {
         return currPlayer;
     }
 
+    public List<Player> getPlayers() {
+        return players;
+    }
+
     public void update(Player currPlayer) {
         boolean isNotNewPlayer = true;
         for (Player player : players) {

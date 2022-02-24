@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Player implements Serializable {
-    String name;
-    int playerId;
-    Map<Integer, Integer> stats;
+    private String name;
+    private int playerId;
+    private Map<Integer, Integer> stats;
 
     public Player(String name) {
         setName(name);

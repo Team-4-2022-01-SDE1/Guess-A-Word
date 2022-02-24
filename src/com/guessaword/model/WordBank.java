@@ -9,7 +9,7 @@ import java.util.*;
 import java.util.stream.*;
 
 public class WordBank {
-    protected List<String> dict;
+    public List<String> dict;
     private static final String LIST_OF_WORDS_FROM_FILE = "data/words.txt";
 
     public WordBank(List<String> dict) {

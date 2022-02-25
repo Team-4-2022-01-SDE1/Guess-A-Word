@@ -2,7 +2,7 @@
 
 ## Guess a word is a Wordle clone. As in Wordle, you get six chances to guess the secret word as the game provides you clues in the form of colored letters to assist your guesses.
 
-##### **For maximum enjoyment, you should set your console to at least *26 rows by 128 columns*, with *colors enabled*.**
+##### **For maximum enjoyment, you should set your console to at least _26 rows by 128 columns_, with _colors enabled_.**
 
 ## Loading the Game
 

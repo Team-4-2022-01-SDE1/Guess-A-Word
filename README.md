@@ -2,10 +2,10 @@
 
 ## Guess a word is a Wordle clone. As in Wordle, you get six chances to guess the secret word as the game provides you clues in the form of colored letters to assist your guesses.
 
-##### **For maximum enjoyment, you should set your console to at least _26 rows by 128 columns_, with _colors enabled_.**
+##### For maximum enjoyment, you should set your console to at least *26 rows by 128 columns*, with *colors enabled*.
 
 ## Loading the Game
-
+* Download the `GuessAWord-1.0-dist.zip` file from the `distribution` folder
 * Unzip the `GuessAWord-1.0-dist.zip` file
 * In the terminal or CMD window, open the unzipped folder: `cd GuessAWord-1.0` (Mac) or `cd GuessAWord` (Windows)
 * Run the game, in terminal: `/bin/zsh ./run.sh` and in CMD: `run` (Windows must have WSL installed)
